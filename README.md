@@ -19,6 +19,8 @@ npm i svelte-mymodal
 How to use
 -------
 
+// any.svelte
+
 ```svelte
 <script>
 	import MyModal from "svelte-mymodal";
