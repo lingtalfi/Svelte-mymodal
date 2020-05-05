@@ -25,6 +25,14 @@
   },
   "description": "A modal component for svelte.",
   "version": "1.0.0",
-  "author": "",
-  "license": "ISC"
+  "author": "lingtalfi",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lingtalfi/Svelte-mymodal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lingtalfi/Svelte-mymodal/issues"
+  },
+  "homepage": "https://github.com/lingtalfi/Svelte-mymodal#readme"
 }

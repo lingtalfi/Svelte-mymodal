@@ -1,11 +1,17 @@
 Svelte mymodal
 ==========
-2020-05-04
+2020-05-05
 
 
 A modal component for svelte.
 
-This is experimental.
+
+
+Install
+------
+```bash
+npm i svelte-mymodal
+```
 
 
 
@@ -179,7 +185,7 @@ window.Test = function () {
 History Log
 ===============
 
-- 1.0.0 -- 2020-05-04
+- 1.0.0 -- 2020-05-05
 
     - initial commit
     
