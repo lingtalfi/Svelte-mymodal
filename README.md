@@ -61,7 +61,6 @@ props:
          
 events:
 	dragmove: receives a dragmove event with detail:
-	
 	- x: the e.clientX, position from the edge of the visible area (i.e. not of the viewport which is pageX)
 	- y: the e.clientY
 	- dx: the delta of x, distance in pixels from the last position during the mousemove (this is typically a tiny distance as mousemove is called at a high frequency)
