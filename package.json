@@ -24,7 +24,7 @@
     "svelte-action-draggable": "^1.2.0"
   },
   "description": "A modal component for svelte.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "lingtalfi",
   "license": "ISC",
   "repository": {

@@ -1,6 +1,6 @@
 Svelte mymodal
 ==========
-2020-05-05
+2020-05-05 -> 2020-05-07
 
 
 A modal component for svelte.
@@ -58,6 +58,9 @@ props:
 	- dragHandle: string=null,
          A query selector identifying the drag handle.
          If null, the whole modal serves as a drag handle.
+    - keepInViewport: bool=true,
+        Whether the modal should be trapped into the viewport.
+        If false, the user can drag the modal out of the window (and loose it).
          
 events:
 
@@ -66,7 +69,6 @@ events:
 	- y: the e.clientY
 	- dx: the delta of x, distance in pixels from the last position during the mousemove (this is typically a tiny distance as mousemove is called at a high frequency)
 	- dy: the delta in y
-
 
 
 
@@ -195,6 +197,10 @@ window.Test = function () {
 
 History Log
 ===============
+
+- 1.1.0 -- 2020-05-07
+
+    - add keepInViewport option
 
 - 1.0.0 -- 2020-05-05
 

@@ -1,20 +1,20 @@
 <script>
 
 
-
-
     import {writable} from 'svelte/store';
     import {createEventDispatcher} from 'svelte';
     import {beforeUpdate} from 'svelte';
     import draggable from "svelte-action-draggable";
 
 
-
-
     export let options = {};
     export let open = true;
 
 
+    let maxTop = 0;
+    let maxRight = 0;
+    let maxBottom = 0;
+    let maxLeft = 0;
 
 
     const coords = writable({x: 0, y: 0});
@@ -30,7 +30,7 @@
                     return false;
                 }
             }
-        }
+        },
     };
     let displayStyle = '';
 
@@ -41,14 +41,40 @@
          * If null, the whole modal serves as a drag handle.
          */
         dragHandle: null,
+        /**
+         * Whether the modal should be trapped into the viewport.
+         * If false, the user can drag the modal out of the window (and loose it).
+         */
+        keepInViewport: true,
     }, options);
 
 
     function handleDragMove(event) {
-        coords.update($coords => ({
-            x: $coords.x + event.detail.dx,
-            y: $coords.y + event.detail.dy
-        }));
+        coords.update($coords => {
+            let newX = $coords.x + event.detail.dx;
+            let newY = $coords.y + event.detail.dy;
+
+
+            if (true === modalOptions.keepInViewport) {
+                if (newX < maxLeft) {
+                    newX = maxLeft;
+                }
+                if (newX > maxRight) {
+                    newX = maxRight;
+                }
+                if (newY < maxTop) {
+                    newY = maxTop;
+                }
+                if (newY > maxBottom) {
+                    newY = maxBottom;
+                }
+            }
+
+            return ({
+                x: newX,
+                y: newY,
+            });
+        });
 
         dispatch('dragmove', event.detail);
 
@@ -70,6 +96,17 @@
             elStyle.innerHTML = '.draggable-unselectable > * {user-select: none;}';
         }
         this.classList.add('draggable-unselectable');
+
+
+        if (true === modalOptions.keepInViewport) {
+
+            let r = event.target.firstChild.getBoundingClientRect();
+            maxLeft = -r.left + $coords.x;
+            maxRight = window.innerWidth - r.right + $coords.x;
+            maxTop = -r.top + $coords.y;
+            maxBottom = window.innerHeight - r.bottom + $coords.y;
+        }
+
     }
 
     function handleDragEnd(event) {
