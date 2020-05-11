@@ -1,6 +1,6 @@
 Svelte mymodal
 ==========
-2020-05-05 -> 2020-05-07
+2020-05-05 -> 2020-05-11
 
 
 A modal component for svelte.
@@ -55,6 +55,7 @@ props:
 
 - open: bool, controls the modal visibility
 - options: 
+	- cssClass: string="", the css class to add to the div containing the modal.
 	- dragHandle: string=null,
          A query selector identifying the drag handle.
          If null, the whole modal serves as a drag handle.
@@ -198,6 +199,10 @@ window.Test = function () {
 History Log
 ===============
 
+- 1.2.0 -- 2020-05-10
+
+    - add cssClass option
+    
 - 1.1.0 -- 2020-05-07
 
     - add keepInViewport option

@@ -11,12 +11,12 @@ import { sass } from 'svelte-preprocess-sass';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/main.js', // (1)
+	input: 'src/test.js', // (1)
 	output: {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'dist/bundle.js' // (2)
+		file: 'dist/bundle-test.js' // (2)
 	},
 	plugins: [
 		svelte({
@@ -25,7 +25,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file - better for performance
 			css: css => {
-				css.write('dist/bundle.css'); // (3)
+				css.write('dist/bundle-test.css'); // (3)
 			},
 			preprocess: {
 				style: sass(),
@@ -68,7 +68,7 @@ function serve() {
 			if (!started) {
 				started = true;
 
-				require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
+				require('child_process').spawn('npm', ['run', 'start-test', '--', '--dev'], {
 					stdio: ['ignore', 'inherit', 'inherit'],
 					shell: true
 				});

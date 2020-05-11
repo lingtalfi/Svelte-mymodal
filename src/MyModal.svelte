@@ -8,6 +8,7 @@
 
 
     export let options = {};
+
     export let open = true;
 
 
@@ -36,6 +37,10 @@
 
 
     let modalOptions = Object.assign({
+        /**
+         * The css class to add to the modal container div.
+         */
+        cssClass: "",
         /**
          * A selector identifying the drag handle.
          * If null, the whole modal serves as a drag handle.
@@ -155,6 +160,7 @@
 
 
 <div
+        class={options.cssClass}
         use:draggable={draggableOptions}
         on:dragstart={handleDragStart}
         on:dragmove={handleDragMove}
